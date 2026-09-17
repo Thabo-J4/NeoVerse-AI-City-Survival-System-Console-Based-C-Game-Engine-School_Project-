@@ -1,4 +1,4 @@
-#include "Event_Processing_h.cpp"
+#include "Event_Processing.h"
 #include <iostream>
 using namespace std;
 #ifndef EVENTPROCESSOR_H
