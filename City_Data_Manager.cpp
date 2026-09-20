@@ -2,6 +2,9 @@
 #include <iostream>
 using namespace std;
 
+vector<SensorRead> &CityDataManager::getReadings() { return dailyReadings; }
+list<CityLog> &CityDataManager::getLogs() { return historicalLogs; }
+
 void CityDataManager::addReading(const SensorRead &reading)
 {
     dailyReadings.push_back(reading); // 0(1) amortised

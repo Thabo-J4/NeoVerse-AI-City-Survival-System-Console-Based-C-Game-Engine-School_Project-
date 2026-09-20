@@ -26,6 +26,9 @@ public:
 
     int readingCount() const;
     int LogCount() const;
+
+    vector<SensorRead> &getReadings();
+    list<CityLog> &getLogs();
 };
 
 #endif
