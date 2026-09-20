@@ -1,0 +1,3 @@
+City_Name=NeoVerse City
+Max_Event_Capacity=100
+Critical_Severity_Threshold=4

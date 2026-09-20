@@ -137,7 +137,8 @@ void run_city_component_section()
 }
 
 // STL algorithm performance tools
-void run_performance_section(CityDataManager &cityData)
+vector<Event> run_performance_section(CityDataManager &cityData)
+
 {
     cout << "\n<---- STL Algorithms & Performance ---->\n";
 
@@ -145,7 +146,7 @@ void run_performance_section(CityDataManager &cityData)
     if (readings.empty())
     {
         cout << "No readings available!\n";
-        return;
+        return vector<Event>();
     }
 
     SensorRead highest = PerformanceTools::findHighestUsage(readings);
@@ -168,6 +169,8 @@ void run_performance_section(CityDataManager &cityData)
 
     bool found = PerformanceTools::eventExists(sampleEvents, "EVENT-011");
     cout << "Event EVENT-011 exists: " << (found ? "yes" : "no") << "\n";
+
+    return sampleEvents;
 }
 
 // Reports section
@@ -202,7 +205,7 @@ int main()
     bool loggedIn = run_login_section(loginSystem);
     if (!loggedIn)
     {
-        cout << "Existing simulation...\n";
+        cout << "Exiting simulation...\n";
         return 1;
     }
 
@@ -218,8 +221,7 @@ int main()
     run_city_component_section();
 
     // STL algorithms & performance
-    run_performance_section(cityData);
-
+    vector<Event> newEvents = run_performance_section(cityData);
     // reports
     run_reports_section(report_gen, config);
 
@@ -228,6 +230,8 @@ int main()
     File_Manager::save_Engineers(loginSystem.getEngineers(), "engineers.dat");
     File_Manager::save_CityLogs(cityData.getLogs(), "city_logs.dat");
     File_Manager::export_Logs_To_CSV(cityData.getLogs(), "city_logs_export.csv");
+    File_Manager::save_Events(newEvents, "events.dat");
+
     cout << "State saved to files: engineers.dat, city_logs.dat, city_logs_export.csv\n";
 
     cout << "\nSimulation is completed.\n";

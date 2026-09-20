@@ -11,6 +11,17 @@ vector<Engineer> &LoginSystem::getEngineers()
     return engineers;
 }
 
+// Linear
+Engineer *LoginSystem::loginLinear(const string &username, const string &password)
+{
+    int index = sequentialSearchByUsername(username);
+    if (index != -1 && engineers[index].verifyPass(password))
+    {
+        return &engineers[index];
+    }
+    return nullptr;
+}
+
 // Sequential Search
 int LoginSystem::sequentialSearchByUsername(const string &username) const
 {
