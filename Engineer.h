@@ -20,10 +20,14 @@ private:
     string encryptedPassword; // Encrypted password
     ClearanceLevel clearance;
 
+    Engineer(const string &id, const string &uname, const string &encrypted_password, ClearanceLevel level, bool);
+
 public:
     Engineer() = default;
     Engineer(const string &id, const string &uname,
              const string &plainPassword, ClearanceLevel level);
+
+    static Engineer fromRecord(const string &id, const string &uname, const string &encrypted_password, ClearanceLevel level);
 
     // GET
     string getID() const;

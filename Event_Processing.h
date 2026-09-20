@@ -30,6 +30,9 @@ public:
     int getSeverity() const;
     string getTypeString() const;
     void display() const;
+
+    static string type_to_string(EventType t);
+    static EventType stringToType(const string &str);
 };
 
 class EmergencyEvent : public Event

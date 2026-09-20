@@ -1,5 +1,11 @@
-#include "Engineer_h.cpp"
+#include "Engineer.h"
 using namespace std;
+
+Engineer::Engineer(const string &id, const string &uname, const string &encrypted_password, ClearanceLevel level, bool) : engineerID(id), username(uname), encryptedPassword(encrypted_password), clearance(level) {}
+Engineer Engineer::fromRecord(const string &id, const string &uname, const string &encrypted_password, ClearanceLevel level)
+{
+    return Engineer(id, uname, encrypted_password, level, true);
+}
 
 Engineer::Engineer(const string &id, const string &uname, const string &plainPassword, ClearanceLevel level)
     : engineerID(id), username(uname), clearance(level)
